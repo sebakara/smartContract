@@ -50,7 +50,7 @@ contract PatientRegistry {
     }
 
     // Function to register a new patient
-    function registerPatient(string memory _name, uint256 _age) external {
+    function registerPatient(string memory _name, uint256 _age) external onlyRegisteredDoctors {
         require(!patients[msg.sender].isRegistered, "Patient already registered");
         
         Patient storage newPatient = patients[msg.sender];
